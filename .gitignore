@@ -13,6 +13,18 @@ node_modules
 !/.mvn/wrapper/maven-wrapper.jar
 
 
+#Compiled class files
+*.class
+
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*tar.gz
+*.rar
+
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
@@ -61,12 +73,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
 
 ### STS ###
 .apt_generated
