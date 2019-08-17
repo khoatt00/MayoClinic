@@ -1,4 +1,4 @@
-package com.maaticit.timesheet.main;
+package com.maaticit.timesheet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
