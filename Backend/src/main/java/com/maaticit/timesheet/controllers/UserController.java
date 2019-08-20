@@ -14,12 +14,12 @@ import com.maaticit.timesheet.service.EmployeeService;
 
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/api")
 public class UserController {
 	@Autowired
 	EmployeeService employeeService;
 	
-	@PostMapping("/add")
+	@PostMapping("/user")
 	public void employeeAdd(@RequestBody Employee employee) {
 		employeeService.addEmployee(employee);
 		
