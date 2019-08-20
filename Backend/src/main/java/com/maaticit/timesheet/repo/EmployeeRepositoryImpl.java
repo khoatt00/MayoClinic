@@ -10,9 +10,10 @@ import com.maaticit.timesheet.entity.Employee;
 @Repository
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
+	private List<Employee> list=new ArrayList<>();
+	
 	@Override
 	public void save(List<Employee> employee) {
-		List<Employee> list=new ArrayList<>();
 		
 		list.addAll(employee);
 		System.out.println("the list of employees are: \n");
