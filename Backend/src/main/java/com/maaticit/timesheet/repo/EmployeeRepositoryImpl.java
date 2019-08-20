@@ -13,14 +13,9 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 	private List<Employee> list=new ArrayList<>();
 	
 	@Override
-	public void save(List<Employee> employee) {
+	public void save(Employee employee) {
 		
-		list.addAll(employee);
-		System.out.println("the list of employees are: \n");
-		for(Employee e:list) {
-			System.out.println(e);
-		}
-		
+		list.add(employee);
 	}
 
 }

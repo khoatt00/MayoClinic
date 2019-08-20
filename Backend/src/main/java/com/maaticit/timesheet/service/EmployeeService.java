@@ -6,6 +6,6 @@ import com.maaticit.timesheet.entity.Employee;
 
 public interface EmployeeService {
 
-	void addEmployee(List<Employee> employee);
+	void addEmployee(Employee employee);
 
 }

@@ -20,7 +20,7 @@ public class UserController {
 	EmployeeService employeeService;
 	
 	@PostMapping("/add")
-	public void employeeAdd(@RequestBody List<Employee> employee) {
+	public void employeeAdd(@RequestBody Employee employee) {
 		employeeService.addEmployee(employee);
 		
 	}
