@@ -28,6 +28,8 @@ public class Employee {
 //	@Column(name="employee_password")
 	private String password;
 	
+	private String role;
+	
 	
 	public int getId() {
 		return id;
@@ -59,10 +61,13 @@ public class Employee {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", phone=" + phone + ", username=" + username + ", password="
-				+ password + "]";
+	public String getRole() {
+		return role;
 	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.maaticit.timesheet.dto.EmployeeDto;
 import com.maaticit.timesheet.entity.Employee;
 import com.maaticit.timesheet.service.EmployeeService;
 
@@ -20,8 +21,8 @@ public class UserController {
 	EmployeeService employeeService;
 	
 	@PostMapping("/user")
-	public void employeeAdd(@RequestBody Employee employee) {
-		employeeService.addEmployee(employee);
+	public void employeeAdd(@RequestBody EmployeeDto employeeDto) {
+		employeeService.addEmployee(employeeDto);
 		
 	}
 
