@@ -9,4 +9,6 @@ public interface EmployeeService {
 
 	EmployeeDto addEmployee(EmployeeDto employeeDto);
 
+	List<EmployeeDto> getAllEmployee();
+
 }

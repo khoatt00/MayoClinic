@@ -33,7 +33,6 @@ public class MaaticTimesheetApplicationTests {
 
 	private EmployeeDto setEmployeeDto() {
 		employeeDto =new EmployeeDto();
-		employeeDto.setId(1);
 		employeeDto.setName("sand");
 		employeeDto.setPassword("password");
 		employeeDto.setPhone("111-222-3333");
@@ -63,7 +62,6 @@ public class MaaticTimesheetApplicationTests {
 	public void addEmployeeTest() throws Exception {
 		EmployeeDto employeeAdded = employeeService.addEmployee(employeeDto);
 		Assert.assertNotNull(employeeAdded);
-		assertEquals("failure - Id doesn't match", employeeDto.getId(), employeeAdded.getId());
 		assertEquals("failure - name doesn't match", employeeDto.getName(), employeeAdded.getName());
 		assertEquals("failure - password doesn't match", employeeDto.getPassword(), employeeAdded.getPassword());
 		assertEquals("failure - Phone doesn't match", employeeDto.getPhone(), employeeAdded.getPhone());

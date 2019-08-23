@@ -1,6 +1,7 @@
 package com.maaticit.timesheet.service;
 	
-	import java.util.List;
+	import java.util.ArrayList;
+import java.util.List;
 	
 	import org.springframework.beans.BeanUtils;
 	import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,20 @@ package com.maaticit.timesheet.service;
 			mapEmployeeDetails(employee,employeeDto);
 			return employeeDto;
 	
+		}
+
+
+		@Override
+		public List<EmployeeDto> getAllEmployee() {
+			List<EmployeeDto> employeesDto=new ArrayList<>();
+			List<Employee> employees=(List<Employee>) employeeRepo.findAll();
+			for(Employee e:employees) {
+				EmployeeDto employeeDto=new EmployeeDto();
+				mapEmployeeDetails(e, employeeDto);
+				employeesDto.add(employeeDto);
+			}
+			
+			return employeesDto;
 		}
 	
 	}

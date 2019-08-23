@@ -1,34 +1,38 @@
 package com.maaticit.timesheet.entity;
 
-//import javax.persistence.Entity;
-//import javax.persistence.Column;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.Table;
-//
-//@Entity
-//@Table(name="maatic_employee")
+import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="maatic_employee")
 
 public class Employee {
 	
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-//	@Column(name="employee_name")
+	@Column(name="employee_name")
 	private String name;
 	
-//	@Column(name="employee_phone")
+	@Column(name="employee_phone")
 	private String phone;
 	
-//	@Column(name="employee_username")
+	@Column(name="employee_username")
 	private String username;
 	
-//	@Column(name="employee_password")
+	@Column(name="employee_password")
 	private String password;
 	
+	@Column(name="employee_role")
 	private String role;
+	
+	@Column(name="employee_address")
+	private String address;
 	
 	
 	public int getId() {
@@ -68,6 +72,13 @@ public class Employee {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 	
 	
 }
