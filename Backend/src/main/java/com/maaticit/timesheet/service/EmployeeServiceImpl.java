@@ -26,10 +26,19 @@ import java.util.List;
 		@Override
 		public EmployeeDto addEmployee(EmployeeDto employeeDto) {
 			Employee employee=new Employee();
-			mapEmployeeDetails(employeeDto, employee);
-			employeeRepo.save(employee);
-			mapEmployeeDetails(employee,employeeDto);
-			return employeeDto;
+			boolean validatePassword=false;
+			validatePassword=validatePassword(employeeDto);
+			if(validatePassword){
+				mapEmployeeDetails(employeeDto, employee);
+				employeeRepo.save(employee);
+				mapEmployeeDetails(employee,employeeDto);
+				return employeeDto;
+			}
+			else {
+				System.out.println("password mismatch");
+				return null;
+			}
+			
 	
 		}
 
@@ -45,6 +54,12 @@ import java.util.List;
 			}
 			
 			return employeesDto;
+		}
+		
+		public boolean validatePassword(EmployeeDto employeeDto) {
+			return(employeeDto.getPassword().equals(employeeDto.getConfirmPassword()));
+			
+			
 		}
 	
 	}
