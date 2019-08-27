@@ -8,6 +8,7 @@ public class EmployeeDto {
 		private String phone;	
 		private String username;
 		private String password;
+		private String confirmPassword;
 		private Role role;
 	
 		public String getName() {
@@ -47,6 +48,13 @@ public class EmployeeDto {
 		public void setRole(Role role) {
 			this.role = role;
 		}
+		public String getConfirmPassword() {
+			return confirmPassword;
+		}
+		public void setConfirmPassword(String confirmPassword) {
+			this.confirmPassword = confirmPassword;
+		}
+		
 	
 		
 	

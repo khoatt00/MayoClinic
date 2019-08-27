@@ -23,13 +23,28 @@ import java.util.List;
 		}
 	
 	
+		public boolean validatePassword(EmployeeDto employeeDto) {
+			return(employeeDto.getPassword().equals(employeeDto.getConfirmPassword()));
+			
+			
+		}
+
 		@Override
 		public EmployeeDto addEmployee(EmployeeDto employeeDto) {
 			Employee employee=new Employee();
-			mapEmployeeDetails(employeeDto, employee);
-			employeeRepo.save(employee);
-			mapEmployeeDetails(employee,employeeDto);
-			return employeeDto;
+			boolean validatePassword=false;
+			validatePassword=validatePassword(employeeDto);
+			if(validatePassword){
+				mapEmployeeDetails(employeeDto, employee);
+				employeeRepo.save(employee);
+				mapEmployeeDetails(employee,employeeDto);
+				return employeeDto;
+			}
+			else {
+				System.out.println("password mismatch");
+				return null;
+			}
+			
 	
 		}
 
