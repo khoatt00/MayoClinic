@@ -1,11 +1,15 @@
 package com.maaticit.timesheet.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.maaticit.timesheet.enumclasses.Role;
 
 @Entity
 @Table(name="maatic_employee")
@@ -29,7 +33,8 @@ public class Employee {
 	private String password;
 	
 	@Column(name="employee_role")
-	private String role;
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 	@Column(name="employee_address")
 	private String address;
@@ -65,11 +70,10 @@ public class Employee {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public String getRole() {
+	public Role getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 	public String getAddress() {
