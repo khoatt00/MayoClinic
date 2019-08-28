@@ -6,8 +6,9 @@ import java.util.List;
 	import org.springframework.beans.BeanUtils;
 	import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Service;
-	
-	import com.maaticit.timesheet.dto.EmployeeDto;
+
+import com.maaticit.timesheet.Exception.InvalidRequestException;
+import com.maaticit.timesheet.dto.EmployeeDto;
 	import com.maaticit.timesheet.entity.Employee;
 	import com.maaticit.timesheet.repo.EmployeeRepository;
 	
@@ -30,7 +31,7 @@ import java.util.List;
 		}
 
 		@Override
-		public EmployeeDto addEmployee(EmployeeDto employeeDto) {
+		public EmployeeDto addEmployee(EmployeeDto employeeDto) throws InvalidRequestException {
 			Employee employee=new Employee();
 			boolean validatePassword=false;
 			validatePassword=validatePassword(employeeDto);
@@ -41,8 +42,7 @@ import java.util.List;
 				return employeeDto;
 			}
 			else {
-				System.out.println("password mismatch");
-				return null;
+				throw new InvalidRequestException("password miss-match");
 			}
 			
 	
