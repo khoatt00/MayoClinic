@@ -29,16 +29,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public EmployeeDto addEmployee(EmployeeDto employeeDto) throws InvalidRequestException {
-		Employee employee=new Employee();
-		boolean validatePassword=false;
-		validatePassword=validatePassword(employeeDto);
-		if(validatePassword){
+		Employee employee = new Employee();
+		boolean validatePassword = false;
+		validatePassword = validatePassword(employeeDto);
+		if (validatePassword) {
 			mapEmployeeDetails(employeeDto, employee);
 			employeeRepo.save(employee);
-			mapEmployeeDetails(employee,employeeDto);
+			mapEmployeeDetails(employee, employeeDto);
 			return employeeDto;
-		}
-		else {
+		} else {
 			throw new InvalidRequestException("password miss-match");
 		}
 	}
