@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.maaticit.timesheet.Exception.InvalidRequestException;
 import com.maaticit.timesheet.dto.EmployeeDto;
-import com.maaticit.timesheet.entity.Employee;
 
 public interface EmployeeService {
 
@@ -12,5 +11,7 @@ public interface EmployeeService {
 
 	List<EmployeeDto> getAllEmployee();
 
-	EmployeeDto getEmployeeById(int id);
+
+	public EmployeeDto getEmployeeById(int id);
+
 }
