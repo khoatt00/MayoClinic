@@ -1,7 +1,8 @@
 package com.maaticit.timesheet.service;
-	
-	import java.util.ArrayList;
+
+import java.util.ArrayList;
 import java.util.List;
+
 	
 	import org.springframework.beans.BeanUtils;
 	import org.springframework.beans.factory.annotation.Autowired;
@@ -44,22 +45,14 @@ import com.maaticit.timesheet.dto.EmployeeDto;
 			else {
 				throw new InvalidRequestException("password miss-match");
 			}
-			
-	
-		}
-
-
+      
 		@Override
-		public List<EmployeeDto> getAllEmployee() {
-			List<EmployeeDto> employeesDto=new ArrayList<>();
-			List<Employee> employees=(List<Employee>) employeeRepo.findAll();
-			for(Employee e:employees) {
-				EmployeeDto employeeDto=new EmployeeDto();
-				mapEmployeeDetails(e, employeeDto);
-				employeesDto.add(employeeDto);
-			}
-			
-			return employeesDto;
-		}
-	
+	  public EmployeeDto getEmployeeById(int id) {
+		Employee employee = employeeRepo.findById(id).get();
+
+		EmployeeDto employeeDto = new EmployeeDto();
+		mapEmployeeDetails(employee, employeeDto);
+		return employeeDto;
+
 	}
+}
