@@ -3,10 +3,9 @@ package com.maaticit.timesheet.service;
 import java.util.ArrayList;
 import java.util.List;
 
-	
-	import org.springframework.beans.BeanUtils;
-	import org.springframework.beans.factory.annotation.Autowired;
-	import org.springframework.stereotype.Service;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.maaticit.timesheet.Exception.InvalidRequestException;
 import com.maaticit.timesheet.dto.EmployeeDto;
@@ -54,12 +53,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
-
-		@Override
-		public List<EmployeeDto> getAllEmployee() {
-			// TODO Auto-generated method stub
-			return null;
+	@Override
+	public List<EmployeeDto> getAllEmployee() {
+		List<EmployeeDto> employeeDtos = new ArrayList<>();
+		List<Employee> employees = (List<Employee>) employeeRepo.findAll();
+		for (Employee employee : employees) {
+			EmployeeDto employeeDto = new EmployeeDto();
+			mapEmployeeDetails(employee, employeeDto);
+			employeeDtos.add(employeeDto);
 		}
-	
+		return employeeDtos;
+	}
 
 }
