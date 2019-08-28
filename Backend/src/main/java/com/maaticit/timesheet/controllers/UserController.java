@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import com.maaticit.timesheet.Exception.InvalidRequestException;
+import com.maaticit.timesheet.Exception.MaaticTimesheetException;
+
 import com.maaticit.timesheet.dto.EmployeeDto;
 import com.maaticit.timesheet.service.EmployeeService;
 
@@ -20,7 +24,7 @@ public class UserController {
 	EmployeeService employeeService;
 
 	@PostMapping("/user")
-	public void employeeAdd(@RequestBody EmployeeDto employeeDto) {
+	public void employeeAdd(@RequestBody EmployeeDto employeeDto) throws MaaticTimesheetException {
 		employeeService.addEmployee(employeeDto);
 
 	}

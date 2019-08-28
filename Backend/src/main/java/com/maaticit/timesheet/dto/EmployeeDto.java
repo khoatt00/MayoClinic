@@ -1,12 +1,15 @@
 package com.maaticit.timesheet.dto;
-	
-	public class EmployeeDto {
+
+import com.maaticit.timesheet.enumclasses.Role;
+
+public class EmployeeDto {
 		private String name;
 		private String address;
 		private String phone;	
 		private String username;
 		private String password;
-		private String role;
+		private String confirmPassword;
+		private Role role;
 	
 		public String getName() {
 			return name;
@@ -39,12 +42,20 @@ package com.maaticit.timesheet.dto;
 		public void setPassword(String password) {
 			this.password = password;
 		}
-		public String getRole() {
+		public Role getRole() {
 			return role;
 		}
-		public void setRole(String role) {
+		public void setRole(Role role) {
 			this.role = role;
 		}
+		public String getConfirmPassword() {
+			return confirmPassword;
+		}
+		public void setConfirmPassword(String confirmPassword) {
+			this.confirmPassword = confirmPassword;
+		}
+		
+	
 		
 	
 	
