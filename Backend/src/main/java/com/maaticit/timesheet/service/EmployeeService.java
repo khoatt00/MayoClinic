@@ -12,5 +12,5 @@ public interface EmployeeService {
 
 	List<EmployeeDto> getAllEmployee();
 
-	public EmployeeDto getEmployeeById(int id);
+	EmployeeDto getEmployeeById(int id);
 }

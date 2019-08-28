@@ -45,6 +45,7 @@ import com.maaticit.timesheet.dto.EmployeeDto;
 			else {
 				throw new InvalidRequestException("password miss-match");
 			}
+		}
       
 		@Override
 	  public EmployeeDto getEmployeeById(int id) {
@@ -55,4 +56,11 @@ import com.maaticit.timesheet.dto.EmployeeDto;
 		return employeeDto;
 
 	}
+
+
+		@Override
+		public List<EmployeeDto> getAllEmployee() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }
