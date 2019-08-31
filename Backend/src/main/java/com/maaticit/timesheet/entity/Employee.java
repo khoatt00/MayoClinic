@@ -39,6 +39,10 @@ public class Employee {
 	@Column(name="employee_address")
 	private String address;
 	
+	@Column(name="employee_email")
+	private String email;
+	
+	
 	
 	public int getId() {
 		return id;
@@ -82,7 +86,10 @@ public class Employee {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }
