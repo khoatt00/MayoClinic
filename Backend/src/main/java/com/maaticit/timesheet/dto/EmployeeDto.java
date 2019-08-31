@@ -9,6 +9,7 @@ public class EmployeeDto {
 		private String username;
 		private String password;
 		private String confirmPassword;
+		private String email;
 		private Role role;
 	
 		public String getName() {
@@ -54,6 +55,13 @@ public class EmployeeDto {
 		public void setConfirmPassword(String confirmPassword) {
 			this.confirmPassword = confirmPassword;
 		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		
 		
 	
 		
