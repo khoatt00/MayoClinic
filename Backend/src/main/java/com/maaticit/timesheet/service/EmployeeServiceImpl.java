@@ -12,13 +12,18 @@ import com.maaticit.timesheet.Exception.InvalidRequestException;
 import com.maaticit.timesheet.dto.EmployeeDto;
 
 import com.maaticit.timesheet.entity.Employee;
+import com.maaticit.timesheet.entity.TimesheetFile;
 import com.maaticit.timesheet.repo.EmployeeRepository;
+import com.maaticit.timesheet.repo.FileRepository;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	EmployeeRepository employeeRepo;
+	
+	@Autowired
+	FileRepository fileRepository;
 
 	private void mapEmployeeDetails(Object source, Object destination) {
 		BeanUtils.copyProperties(source, destination);
@@ -88,6 +93,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 			employeeDtos.add(employeeDto);
 		}
 		return employeeDtos;
+	}
+
+	@Override
+	public TimesheetFile saveFile(TimesheetFile timesheetFile) {
+		return fileRepository.save(timesheetFile);
 	}
 
 }
