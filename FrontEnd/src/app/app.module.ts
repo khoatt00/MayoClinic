@@ -1,30 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { ListUserComponent } from './registration/listusers.component';
 import { AddTimesheetComponent } from './timesheet/addtimesheet.component';
+import { CommonModule } from '@angular/common';
+import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   { path: 'User/AddUser', component: RegistrationComponent },
   { path: 'User/Listusers', component: ListUserComponent },
-  { path: 'Timesheet/add', component: AddTimesheetComponent },
+  { path: 'Timesheet/add', component: UploadComponent },
   { path: 'Timesheet/AddTimesheet', component: AppComponent },
   { path: '', redirectTo: 'User/AddUser', pathMatch: 'full' },
 ];
 @NgModule({
   declarations: [
     AppComponent, RegistrationComponent, ListUserComponent,
-    AddTimesheetComponent
+    AddTimesheetComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,    
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
