@@ -19,11 +19,11 @@ import com.maaticit.timesheet.service.EmployeeService;
 public class UserController {
 	@Autowired
 	EmployeeService employeeService;
-
+   
 	@PostMapping("/user")
-	public void employeeAdd(@RequestBody EmployeeDto employeeDto) throws MaaticTimesheetException {
-		employeeService.addEmployee(employeeDto);
-
+	public EmployeeDto addEmployee(@RequestBody EmployeeDto employeeDto) throws MaaticTimesheetException {
+		return employeeService.addEmployee(employeeDto);
+		 
 	}
 	
 	@GetMapping("/user")
