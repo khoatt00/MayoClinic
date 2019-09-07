@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 
@@ -13,7 +14,6 @@ import { AddTimesheetComponent } from './timesheet/addtimesheet.component';
 const routes: Routes = [
   { path: 'User/AddUser', component: RegistrationComponent },
   { path: 'User/Listusers', component: ListUserComponent },
-  { path: 'Timesheet/add', component: AddTimesheetComponent },
   { path: 'Timesheet/AddTimesheet', component: AppComponent },
   { path: '', redirectTo: 'User/AddUser', pathMatch: 'full' },
 ];
@@ -24,7 +24,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    FormsModule,    
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
