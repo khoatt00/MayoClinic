@@ -2,8 +2,6 @@ import { Users } from './users.model';
 
 import { Component, Input } from '@angular/core';
 import { ApiService } from '../shared/apiservice.service';
-import { strictEqual } from 'assert';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
     templateUrl: './registration.component.html',
@@ -18,6 +16,7 @@ export class RegistrationComponent {
 
         this.apiService.doPost("/user", this.user).subscribe(response => {
             console.log("add user success");
+            this.user = new Users();
         }, error => {
             console.log(error);
         })

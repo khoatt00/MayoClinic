@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/apiservice.service';
 import { Users } from './users.model';
 
-type NewType = Array<Users>;
-
 @Component({
     templateUrl: './listusers.component.html',
     styleUrls: ['./registration.component.css']

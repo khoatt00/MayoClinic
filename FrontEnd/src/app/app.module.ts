@@ -25,7 +25,6 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
