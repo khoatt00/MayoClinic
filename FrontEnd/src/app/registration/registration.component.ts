@@ -1,5 +1,6 @@
+import { Users } from './users.model';
 
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ApiService } from '../shared/apiservice.service';
 
 @Component({
@@ -7,26 +8,17 @@ import { ApiService } from '../shared/apiservice.service';
     styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-    fullName: String = '';
-    email: String = '';
-    password: String = '';
 
     constructor(private apiService: ApiService) { }
+    user: Users = new Users();
+
     submit(): void {
-        let data = {
-            "name": this.fullName,
-            "address": "something",
-            "phone": "123455",
-            "username": "ujjwalsingh",
-            "password": this.password,
-            "confirmPassword": this.password,
-            "email": this.email,
-            "role": "ADMIN"
-        };
-        this.apiService.doPost("/user", data).subscribe(response => {
+
+        this.apiService.doPost("/user", this.user).subscribe(response => {
             console.log("add user success");
+            this.user = new Users();
         }, error => {
-            console.error("add user failed");
+            console.log(error);
         })
     }
 }

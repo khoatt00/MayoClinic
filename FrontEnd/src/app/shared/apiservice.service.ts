@@ -14,4 +14,9 @@ export class ApiService {
         return this.httpClient.post(actualUri, data);
     }
 
+    doGet(uri: string): Observable<Object> {
+        let actualUri: string = this.baseApi.concat(uri);
+        return this.httpClient.get(actualUri);
+
+    }
 }

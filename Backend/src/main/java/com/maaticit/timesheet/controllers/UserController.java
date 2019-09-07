@@ -25,11 +25,11 @@ public class UserController {
 		employeeService.addEmployee(employeeDto);
 
 	}
-	
+
 	@GetMapping("/user")
-	public List<EmployeeDto> getAllEmployee(){
+	public List<EmployeeDto> getAllEmployee() {
 		return employeeService.getAllEmployee();
-	
+
 	}
 
 	@GetMapping("/user/{id}")

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.maaticit.timesheet.Exception.InvalidRequestException;
 import com.maaticit.timesheet.dto.EmployeeDto;
-
 import com.maaticit.timesheet.entity.Employee;
 import com.maaticit.timesheet.repo.EmployeeRepository;
 
@@ -19,6 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	EmployeeRepository employeeRepo;
+	
 
 	private void mapEmployeeDetails(Object source, Object destination) {
 		BeanUtils.copyProperties(source, destination);
@@ -89,5 +89,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 		return employeeDtos;
 	}
+
 
 }

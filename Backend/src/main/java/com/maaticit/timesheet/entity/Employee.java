@@ -1,9 +1,9 @@
 package com.maaticit.timesheet.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +17,7 @@ import com.maaticit.timesheet.enumclasses.Role;
 public class Employee {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="employee_name")
@@ -41,7 +41,6 @@ public class Employee {
 	
 	@Column(name="employee_email")
 	private String email;
-	
 	
 	
 	public int getId() {
