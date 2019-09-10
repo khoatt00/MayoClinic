@@ -18,7 +18,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	EmployeeRepository employeeRepo;
-	
 
 	private void mapEmployeeDetails(Object source, Object destination) {
 		BeanUtils.copyProperties(source, destination);
@@ -67,7 +66,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
-
 	@Override
 	public EmployeeDto getEmployeeById(int id) {
 		Employee employee = employeeRepo.findById(id).get();
@@ -90,5 +88,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDtos;
 	}
 
+	@Override
+	public void deleteEmployeeById(int id) {
+		employeeRepo.deleteById(id);
 
+	}
 }
