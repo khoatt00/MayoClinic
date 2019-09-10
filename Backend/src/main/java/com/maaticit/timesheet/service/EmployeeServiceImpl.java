@@ -91,5 +91,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDtos;
 	}
 
+	@Override
+	public void deleteEmployeeById(int id) {
+		employeeRepo.deleteById( id);
 
+	}
+	
+	
 }
