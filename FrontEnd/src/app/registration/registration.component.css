@@ -3,12 +3,16 @@ form
     border: 1 px solid gray; 
 }
 
-input[type=text], select, textarea {
+input[type=text],input[type=email],input[type=password], textarea {
     width: 50%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+  }
+  select{
+    width: 50%;
+    
   }
   
   label {
