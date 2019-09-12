@@ -18,7 +18,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	EmployeeRepository employeeRepo;
-	
 
 	private void mapEmployeeDetails(Object source, Object destination) {
 		BeanUtils.copyProperties(source, destination);
@@ -44,16 +43,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 			throw new InvalidRequestException("Password cannot be empty");
 		} else if (employeeDto.getRole() == null) {
 			throw new InvalidRequestException("Role cannot be empty");
-		} else if (employeeDto.getUsername() == null) {
-			throw new InvalidRequestException("Username cannot be empty");
 		} else if (!employeeDto.getConfirmPassword().equals(employeeDto.getPassword())) {
 			throw new InvalidRequestException("confirm password miss-matched ");
 		} else if (employeeDto.getEmail() == null) {
 			throw new InvalidRequestException("Email cannot be empty");
 		} else {
+			validateUserName(employeeDto.getUsername());
 			validateProperEmail(employeeDto);
 		}
 
+	}
+
+	private void validateUserName(String username) throws InvalidRequestException {
+		if (username == null) {
+			throw new InvalidRequestException("Username cannot be empty");
+		} else if (username.length() < 10) {
+			throw new InvalidRequestException("User name requires atleast 10 characters");
+		}
 	}
 
 	@Override
@@ -66,7 +72,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDto;
 
 	}
-
 
 	@Override
 	public EmployeeDto getEmployeeById(int id) {
@@ -89,6 +94,5 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 		return employeeDtos;
 	}
-
 
 }
