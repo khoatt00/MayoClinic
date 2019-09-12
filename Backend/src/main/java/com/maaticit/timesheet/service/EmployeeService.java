@@ -14,5 +14,7 @@ public interface EmployeeService {
 
 	public EmployeeDto getEmployeeById(int id);
 
+	EmployeeDto UpdateEmployee(int id, EmployeeDto employeeDto) throws InvalidRequestException;
+
 
 }

@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+ 
 
 import com.maaticit.timesheet.Exception.MaaticTimesheetException;
 import com.maaticit.timesheet.dto.EmployeeDto;
@@ -21,13 +23,14 @@ public class UserController {
 	EmployeeService employeeService;
 
 	@PostMapping("/user")
-	public void employeeAdd(@RequestBody EmployeeDto employeeDto) throws MaaticTimesheetException {
-		employeeService.addEmployee(employeeDto);
+	public EmployeeDto addEmployee(@RequestBody EmployeeDto employeeDto) throws MaaticTimesheetException {
+		return employeeService.addEmployee(employeeDto);
 
 	}
 
 	@GetMapping("/user")
 	public List<EmployeeDto> getAllEmployee() {
+		System.out.println();
 		return employeeService.getAllEmployee();
 
 	}
@@ -36,4 +39,11 @@ public class UserController {
 	public EmployeeDto getEmployeeById(@PathVariable int id) {
 		return employeeService.getEmployeeById(id);
 	}
+	
+	@PutMapping("/user/{id}")
+	public EmployeeDto UpdateEmployee(int id,@PathVariable EmployeeDto employeeDto) throws MaaticTimesheetException {
+		return employeeService.UpdateEmployee(id, employeeDto);
+	}
+	
+	
 }
