@@ -18,6 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	EmployeeRepository employeeRepo;
+	
 
 	private void mapEmployeeDetails(Object source, Object destination) {
 		BeanUtils.copyProperties(source, destination);
@@ -88,4 +89,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDtos;
 	}
 
+	@Override
+	public EmployeeDto UpdateEmployee(int id, EmployeeDto employeeDto)throws InvalidRequestException {
+		if (!employeeRepo.existsById(id)) {
+	throw new InvalidRequestException("the specified user does not exist"); 
+	}
+		Employee employee = new Employee();
+		validateEmployee(employeeDto);
+		mapEmployeeDetails(employeeDto, employee);
+		employeeRepo.save(employee);
+		mapEmployeeDetails(employee, employeeDto);
+		return employeeDto;	
+
+
+}
 }

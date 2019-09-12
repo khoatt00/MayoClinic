@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListUserComponent } from './registration/listusers.component';
 import { AddTimesheetComponent } from './timesheet/addtimesheet.component';
 import { UploadComponent } from './upload/upload.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'User/AddUser', component: RegistrationComponent },
@@ -19,12 +20,13 @@ const routes: Routes = [
   { path: 'Timesheet/view', component: AddTimesheetComponent },
   { path: 'Timesheet/AddTimesheet', component: AppComponent },
   { path: '', redirectTo: 'User/AddUser', pathMatch: 'full' },
+  { path: 'User/login', component: LoginComponent },
 ];
 @NgModule({
   declarations: [
     AppComponent, RegistrationComponent, ListUserComponent,
     AddTimesheetComponent,
-    UploadComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
