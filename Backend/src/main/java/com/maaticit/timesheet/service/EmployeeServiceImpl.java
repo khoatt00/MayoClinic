@@ -117,7 +117,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		for (Employee employee : employees) {
 			EmployeeDto employeeDto = new EmployeeDto();
 			mapEmployeeDetails(employee, employeeDto);
-			employeeDtos.add(employeeDto);
+			employeeDtos.add(employeeDto );
 		}
 		return employeeDtos;
 	}
