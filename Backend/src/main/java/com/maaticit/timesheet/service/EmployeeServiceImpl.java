@@ -2,6 +2,7 @@ package com.maaticit.timesheet.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.BeanUtils;
@@ -39,18 +40,51 @@ public class EmployeeServiceImpl implements EmployeeService {
 			throw new InvalidRequestException("Phone cannot be empty");
 		} else if (employeeDto.getAddress() == null) {
 			throw new InvalidRequestException("Address cannot be empty");
-		} else if (employeeDto.getPassword() == null) {
-			throw new InvalidRequestException("Password cannot be empty");
+
 		} else if (employeeDto.getRole() == null) {
 			throw new InvalidRequestException("Role cannot be empty");
-		} else if (employeeDto.getUsername() == null) {
-			throw new InvalidRequestException("Username cannot be empty");
 		} else if (!employeeDto.getConfirmPassword().equals(employeeDto.getPassword())) {
+
 			throw new InvalidRequestException("confirm password miss-matched ");
 		} else if (employeeDto.getEmail() == null) {
 			throw new InvalidRequestException("Email cannot be empty");
 		} else {
+			validatePassword(employeeDto.getPassword());
+			validateUserName(employeeDto.getUsername());
 			validateProperEmail(employeeDto);
+
+		}
+
+	}
+
+	private void validatePassword(String password) throws InvalidRequestException  {
+		if(password == null) {
+			throw new InvalidRequestException("password cannot be null");
+		}
+		if(password.length() < 8) {
+			throw new InvalidRequestException("Password should have 8 characters");
+		}
+		
+		Pattern letter = Pattern.compile("[a-zA-z]");
+        Pattern digit = Pattern.compile("[0-9]");
+        Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
+
+
+       Matcher hasLetter = letter.matcher(password);
+       Matcher hasDigit = digit.matcher(password);
+       Matcher hasSpecial = special.matcher(password);
+       
+       if(!hasLetter.find() || !hasDigit.find() || !hasSpecial.find()) {
+    	   throw new InvalidRequestException("Password should contain at least 1 letter and 1 special character");
+       }
+	}
+
+	private void validateUserName(String username) throws InvalidRequestException {
+		if (username == null) {
+
+			throw new InvalidRequestException("Username cannot be empty");
+		} else if (username.length() < 10) {
+			throw new InvalidRequestException("User name requires atleast 10 characters");
 		}
 
 	}
@@ -83,7 +117,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		for (Employee employee : employees) {
 			EmployeeDto employeeDto = new EmployeeDto();
 			mapEmployeeDetails(employee, employeeDto);
-			employeeDtos.add(employeeDto);
+			employeeDtos.add(employeeDto );
 		}
 		return employeeDtos;
 	}
