@@ -8,4 +8,6 @@ import com.maaticit.timesheet.entity.Employee;
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employee,Integer> {
 
+	void updateById(int id);
+
 }

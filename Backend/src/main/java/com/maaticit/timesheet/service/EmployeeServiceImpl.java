@@ -127,4 +127,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeRepo.deleteById(id);
 
 	}
+	
+	@Override
+	public void updateEmployeeById(int id) {
+		employeeRepo.updateById(id);
+	
+	}
 }
