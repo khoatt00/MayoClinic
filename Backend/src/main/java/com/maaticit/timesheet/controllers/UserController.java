@@ -40,8 +40,5 @@ public class UserController {
 		return employeeService.getEmployeeById(id);
 	}
 	
-	@PutMapping("/user/{id}")
-	public EmployeeDto UpdateEmployee(int id,@PathVariable EmployeeDto employeeDto) throws MaaticTimesheetException {
-		return employeeService.UpdateEmployee(id, employeeDto);
-	}
+	
 }
