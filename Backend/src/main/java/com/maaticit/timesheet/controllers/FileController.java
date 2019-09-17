@@ -1,6 +1,7 @@
 package com.maaticit.timesheet.controllers;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 
@@ -68,7 +69,7 @@ public class FileController {
 	}
 	
 	@RequestMapping(value="user/timesheet",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public TimesheetFileDto getFilePath() {
+	public List<TimesheetFileDto> getFilePath() {
 		return fileService.getFilePath();
 		
 		

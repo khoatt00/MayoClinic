@@ -1,5 +1,8 @@
 package com.maaticit.timesheet.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,12 +30,20 @@ public class FileServiceImpl implements FileService {
 
 
 	@Override
-	public TimesheetFileDto getFilePath() {
-		int id=1;
-		TimesheetFile file=fileRepository.findById(id).get();
-		TimesheetFileDto dtoFile=new TimesheetFileDto();
-		mapTimesheetFileDetails(file, dtoFile);
-		return dtoFile;
+	public List<TimesheetFileDto> getFilePath() {
+//		int id=1;
+//		TimesheetFile file=fileRepository.findById(id).get();
+//		TimesheetFileDto dtoFile=new TimesheetFileDto();
+//		mapTimesheetFileDetails(file, dtoFile);
+//		return dtoFile;
+		List<TimesheetFileDto> fileDtos = new ArrayList<>();
+		List<TimesheetFile> timesheetFiles = (List<TimesheetFile>) fileRepository.findAll();
+		for(TimesheetFile timesheetfile : timesheetFiles) {
+			TimesheetFileDto dtoFile=new TimesheetFileDto();
+			mapTimesheetFileDetails(timesheetfile, dtoFile);
+			fileDtos.add(dtoFile);
+		}
+		return fileDtos;
 	}
 
 }
