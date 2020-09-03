@@ -1,8 +1,10 @@
 package com.maaticit.timesheet.Exception;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+@Component
 @ResponseStatus(value=HttpStatus.BAD_REQUEST)
 public class InvalidRequestException extends MaaticTimesheetException {
 	private static final long serialVersionUID = -7334221839039919903L;
