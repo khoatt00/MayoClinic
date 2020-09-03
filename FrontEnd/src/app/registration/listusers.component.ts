@@ -9,7 +9,6 @@ import { Users } from './users.model';
 export class ListUserComponent {
 
     users: Array<Users> = [];
-
     constructor(private apiService: ApiService) {
 
     }

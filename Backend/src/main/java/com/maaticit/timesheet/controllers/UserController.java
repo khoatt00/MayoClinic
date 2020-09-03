@@ -22,8 +22,8 @@ public class UserController {
 	EmployeeService employeeService;
 
 	@PostMapping("/user")
-	public void employeeAdd(@RequestBody EmployeeDto employeeDto) throws MaaticTimesheetException {
-		employeeService.addEmployee(employeeDto);
+	public EmployeeDto addEmployee(@RequestBody EmployeeDto employeeDto) throws MaaticTimesheetException {
+		return employeeService.addEmployee(employeeDto);
 
 	}
 
@@ -36,12 +36,13 @@ public class UserController {
 	@GetMapping("/user/{id}")
 	public EmployeeDto getEmployeeById(@PathVariable int id) {
 		return employeeService.getEmployeeById(id);
+
 	}
-	
+
 	@DeleteMapping("/user/{id}")
 	public void deleteEmployeeById(@PathVariable int id) {
 		employeeService.deleteEmployeeById(id);
 
 	}
-	
+
 }
