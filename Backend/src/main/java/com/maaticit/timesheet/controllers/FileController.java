@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.maaticit.timesheet.dto.TimesheetFileDto;
+import com.maaticit.timesheet.entity.Employee;
 import com.maaticit.timesheet.entity.Response;
 import com.maaticit.timesheet.entity.TimesheetFile;
 import com.maaticit.timesheet.service.FileService;
@@ -36,8 +38,12 @@ public class FileController {
 	@Value("${maatic.timesheet.upload.path}")
 	private String path;
 
-	@RequestMapping(value = "user/timesheet", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<Response> saveFile(@RequestParam("file") MultipartFile file) {
+	@RequestMapping(value = "user/timesheet/{id}", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<Response> saveFile(@RequestParam("file") MultipartFile file,@PathVariable("id") int id) {
+		
+		Employee employee= new Employee();
+		employee.setId(id);
+		
 		TimesheetFile timesheetFile = new TimesheetFile();
 		String timesheetUploadPath = path + "/userprofile/" + timesheetFile.getFileId();
 
@@ -50,7 +56,6 @@ public class FileController {
 		String modifiedFileName = FilenameUtils.getBaseName(filename) + "_" + System.currentTimeMillis() + "."
 				+ FilenameUtils.getExtension(filename);
 		File serverFile = new File(timesheetUploadPath + File.separator + modifiedFileName);
-		System.out.println(serverFile);
 		try {
 			FileUtils.writeByteArrayToFile(serverFile, file.getBytes());
 		} catch (Exception e) {
